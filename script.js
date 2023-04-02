@@ -6,6 +6,7 @@ const addBut = document.getElementById('add');
 const subtractBut = document.getElementById('subtract');
 const multiplyBut = document.getElementById('multiply');
 const divideBut = document.getElementById('divide');
+const clear = document.getElementById('clear');
 
 var op = null; 
 var num2 = 0;
@@ -63,10 +64,17 @@ function buttonFunction(){
         num1Box.textContent = ""
     })
     equalsBut.addEventListener("mouseup" , () => num1Box.textContent = operate(num2, num1Box.textContent,op));
+    clear.addEventListener("mouseup" , function(){
+        op = null;
+        num1Box.textContent = null;
+        num2 = null;
+        totalBox.textContent = null;
+    })
 }
 
 /* Chooses which operation to use and returns it*/
 function operate(a,b,op){
+    totalBox.textContent = totalBox.textContent + ' ' + num1Box.textContent + ' ' + "=";
     a = parseInt(a);
     b = parseInt(b);
     if(op == "+"){
